@@ -1,30 +1,20 @@
 package com.soap.utilities;
 
-import com.soap.dao.MonumentDaoImpl;
 import com.soap.jpa.DbMonument;
 import com.soap.model.Monument;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 @Component
 public class MonumentUtil {
 
 
-    private static MonumentDaoImpl monumentDaoImpl;
-
-    private static List<Monument> monuments = new ArrayList<>();
-
-    @Autowired
-    public MonumentUtil(MonumentDaoImpl monumentDaoImpl){
-        this.monumentDaoImpl = monumentDaoImpl;
-    }
+    private static Set<Monument> monuments = new LinkedHashSet<>();
 
 
-    public static List<Monument> getMonuments() {
+
+    public static Set<Monument> getMonuments() {
         return monuments;
     }
 
