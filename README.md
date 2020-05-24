@@ -5,12 +5,19 @@ Another Api method based on the input value returns the monuments which have lar
 
 Installation instructions
 1.Download postgre (https://www.postgresql.org/download/)
+
 2.start the database.
+
 3.create a database named places.
+
 4.perform some monument inputs from schema.sql manually.
+
 5.In application.properties file use your own username and password.
+
 5. mvn clean install
+
 6. cd target
+
 7. java -jar <yourfilename>.jar 
  
 
