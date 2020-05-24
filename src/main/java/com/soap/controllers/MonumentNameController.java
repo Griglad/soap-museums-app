@@ -1,7 +1,7 @@
 package com.soap.controllers;
 
 import com.soap.model.*;
-import com.soap.services.MonumentService;
+import com.soap.services.MonumentNameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -12,10 +12,10 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 public class MonumentNameController {
 
     private static final String NAMESPACE_URI = "http://www.soap.com/model";
-    private MonumentService monumentService;
+    private MonumentNameService monumentService;
 
     @Autowired
-    public MonumentNameController(MonumentService monumentService) {
+    public MonumentNameController(MonumentNameService monumentService) {
 
         this.monumentService = monumentService;
     }

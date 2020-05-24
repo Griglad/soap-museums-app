@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class MonumentService {
+public class MonumentNameService {
 
 
     private MonumentDao monumentDao;
-    private Logger logger = LoggerFactory.getLogger(MonumentService.class);
+    private Logger logger = LoggerFactory.getLogger(MonumentNameService.class);
 
     @Autowired
-    public MonumentService(MonumentDao monumentDao) {
+    public MonumentNameService(MonumentDao monumentDao) {
         this.monumentDao = monumentDao;
     }
 
