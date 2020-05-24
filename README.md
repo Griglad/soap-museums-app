@@ -15,11 +15,11 @@ Installation instructions
 
 5.In application.properties file use your own username and password.
 
-6. mvn clean install
+6.mvn clean install
 
-7. cd target
+7.cd target
 
-8. java -jar <yourfilename>.jar 
+8.java -jar <yourfilename>.jar 
  
 
 
