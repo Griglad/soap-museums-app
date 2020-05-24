@@ -13,7 +13,6 @@ public class MonumentUtil {
     private static Set<Monument> monuments = new LinkedHashSet<>();
 
 
-
     public static Set<Monument> getMonuments() {
         return monuments;
     }
@@ -27,21 +26,18 @@ public class MonumentUtil {
         return monument;
     }
 
-    public static DbMonument retrieveMinDistance(Map<DbMonument, Double> monumentDoubleMap) {
+    public static DbMonument retrieveMinDistanceMonument(Map<DbMonument, Double> monumentDoubleMap) {
 
         DbMonument monument = Collections.min(monumentDoubleMap.entrySet(), Map.Entry.comparingByValue()).getKey();
 
         return monument;
+
     }
 
     public static void update(Monument monument) {
         long counter = monument.getCounter();
         monument.setCounter(++counter);
     }
-
-
-
-
 
 
 }

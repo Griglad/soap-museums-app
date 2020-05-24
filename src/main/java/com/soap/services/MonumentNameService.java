@@ -42,7 +42,7 @@ public class MonumentNameService {
             monumentDistanceOpMap.put(dbmonument, new DistanceOp(myPoint, dbmonument.getPoint()).distance());
         }
         monumentDistanceOpMap.forEach((dbMonument, aDouble) -> logger.info("Distance from my point and " + dbMonument.getName() + " is " + aDouble));
-        DbMonument dbMonument = MonumentUtil.retrieveMinDistance(monumentDistanceOpMap);
+        DbMonument dbMonument = MonumentUtil.retrieveMinDistanceMonument(monumentDistanceOpMap);
         Monument monument = MonumentUtil.fromdbToMonument(dbMonument);
 
 
