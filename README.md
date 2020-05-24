@@ -4,6 +4,7 @@ The nearest monument has a counter which is increased +1 at each request.
 Another Api method based on the input value returns the monuments which have larger counter than the input value. 
 
 Installation instructions
+
 1.Download postgre (https://www.postgresql.org/download/)
 
 2.start the database.
