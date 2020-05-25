@@ -4,7 +4,7 @@
 
 
 
-    <xs:element name="getMonumentNameRequest">
+    <xs:element name="getNearestNameRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="lat" type="xs:long" maxOccurs="1" minOccurs="1"/>
@@ -15,7 +15,7 @@
 
 
 
-    <xs:element name="getMonumentNameResponse">
+    <xs:element name="getNearestNameResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="monumentName" type="xs:string" maxOccurs="1" minOccurs="1"/>

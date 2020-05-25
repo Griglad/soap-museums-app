@@ -1,6 +1,7 @@
 package com.soap.controllers;
 
-import com.soap.model.*;
+import com.soap.model.GetNearestNameRequest;
+import com.soap.model.GetNearestNameResponse;
 import com.soap.services.MonumentNameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -21,12 +22,12 @@ public class MonumentNameController {
     }
 
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getMonumentNameRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getNearestNameRequest")
     @ResponsePayload
-    public GetMonumentNameResponse getMonumentName(@RequestPayload GetMonumentNameRequest request) {
+    public GetNearestNameResponse getNearestNameResponse(@RequestPayload GetNearestNameRequest request) {
 
 
-        return monumentService.getMonumentNameResponse(request);
+        return monumentService.getNearestNameResponse(request);
     }
 
 

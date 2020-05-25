@@ -2,8 +2,8 @@ package com.soap.services;
 
 import com.soap.dao.MonumentDao;
 import com.soap.jpa.DbMonument;
-import com.soap.model.GetMonumentNameRequest;
-import com.soap.model.GetMonumentNameResponse;
+import com.soap.model.GetNearestNameRequest;
+import com.soap.model.GetNearestNameResponse;
 import com.soap.model.Monument;
 import com.soap.utilities.GeometryHelper;
 import com.soap.utilities.MonumentUtil;
@@ -32,8 +32,8 @@ public class MonumentNameService {
 
 
     //return a response with the nearest name based on distance between the input(lat&long) and the points in db
-    public GetMonumentNameResponse getMonumentNameResponse(@RequestPayload GetMonumentNameRequest request) {
-        GetMonumentNameResponse response = new GetMonumentNameResponse();
+    public GetNearestNameResponse getNearestNameResponse(@RequestPayload GetNearestNameRequest request) {
+        GetNearestNameResponse response = new GetNearestNameResponse();
         Point myPoint = GeometryHelper.createPoint(request.getLat(), request.getLong());
         Map<DbMonument, Double> monumentDistanceOpMap = new HashMap<>();
 
