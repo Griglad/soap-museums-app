@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="monumentName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="monument" type="{http://www.soap.com/model}monument"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,15 +38,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "message",
-    "monumentName"
+    "monument"
 })
-@XmlRootElement(name = "getNearestNameResponse")
-public class GetNearestNameResponse {
+@XmlRootElement(name = "findMonumentResponse")
+public class FindMonumentResponse {
 
     @XmlElement(required = true)
     protected String message;
     @XmlElement(required = true)
-    protected String monumentName;
+    protected Monument monument;
 
     /**
      * Gets the value of the message property.
@@ -73,27 +73,27 @@ public class GetNearestNameResponse {
     }
 
     /**
-     * Gets the value of the monumentName property.
+     * Gets the value of the monument property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Monument }
      *     
      */
-    public String getMonumentName() {
-        return monumentName;
+    public Monument getMonument() {
+        return monument;
     }
 
     /**
-     * Sets the value of the monumentName property.
+     * Sets the value of the monument property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Monument }
      *     
      */
-    public void setMonumentName(String value) {
-        this.monumentName = value;
+    public void setMonument(Monument value) {
+        this.monument = value;
     }
 
 }

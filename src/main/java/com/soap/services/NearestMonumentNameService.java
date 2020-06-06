@@ -6,6 +6,7 @@ import com.soap.model.GetNearestNameRequest;
 import com.soap.model.GetNearestNameResponse;
 import com.soap.model.Monument;
 import com.soap.utilities.GeometryHelper;
+import com.soap.utilities.Messages;
 import com.soap.utilities.MonumentUtil;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.operation.distance.DistanceOp;
@@ -34,25 +35,34 @@ public class MonumentNameService {
     //return a response with the nearest name based on distance between the input(lat&long) and the points in db
     public GetNearestNameResponse getNearestNameResponse(@RequestPayload GetNearestNameRequest request) {
         GetNearestNameResponse response = new GetNearestNameResponse();
-        Point myPoint = GeometryHelper.createPoint(request.getLat(), request.getLong());
-        Map<DbMonument, Double> monumentDistanceOpMap = new HashMap<>();
-
-        for (DbMonument dbmonument : monumentDao.getAllDbMonuments()) {
-
-            monumentDistanceOpMap.put(dbmonument, new DistanceOp(myPoint, dbmonument.getPoint()).distance());
-        }
-        monumentDistanceOpMap.forEach((dbMonument, aDouble) -> logger.info("Distance from my point and " + dbMonument.getName() + " is " + aDouble));
-        DbMonument dbMonument = MonumentUtil.retrieveMinDistanceMonument(monumentDistanceOpMap);
-        Monument monument = MonumentUtil.fromdbToMonument(dbMonument);
 
 
-        MonumentUtil.update(monument);
+            Point myPoint = GeometryHelper.createPoint(request.getLat(), request.getLong());
+            Map<DbMonument, Double> monumentDistanceOpMap = new HashMap<>();
 
-        MonumentUtil.getMonuments().add(monument);
+            for (DbMonument dbmonument : monumentDao.getAllDbMonuments()) {
+
+                monumentDistanceOpMap.put(dbmonument, new DistanceOp(myPoint, dbmonument.getPoint()).distance());
+            }
+            monumentDistanceOpMap.forEach((dbMonument, aDouble) -> logger.info("Distance from my point and " + dbMonument.getName() + " is " + aDouble));
+            DbMonument dbMonument = MonumentUtil.retrieveMinDistanceMonument(monumentDistanceOpMap);
+            Monument monument = MonumentUtil.fromdbToMonument(dbMonument);
 
 
-        response.setMonumentName(dbMonument.getName());
+            MonumentUtil.update(monument);
 
+            MonumentUtil.getMonuments().add(monument);
+
+            response.setMessage(Messages.NEAREST_FOUND.info);
+            response.setMonumentName(dbMonument.getName());
+
+//        } else {
+//
+//            response.setMessage(Messages.INVALID_COORDINATES.info);
+//
+//
+//        }
+//        return response;
 
         return response;
 

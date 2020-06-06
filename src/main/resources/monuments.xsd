@@ -3,22 +3,20 @@
            targetNamespace="http://www.soap.com/model" elementFormDefault="qualified">
 
 
-
     <xs:element name="getNearestNameRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="lat" type="xs:long" maxOccurs="1" minOccurs="1"/>
-                <xs:element name="long" type="xs:long" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="latitude" type="xs:double"/>
+                <xs:element name="longitude" type="xs:double"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-
-
     <xs:element name="getNearestNameResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="monumentName" type="xs:string" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="monumentName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -26,7 +24,7 @@
     <xs:element name="getNamesLargerInputValueRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="point" type="xs:long" maxOccurs="1" minOccurs="1"/>
+                <xs:element name="counterValue" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -35,21 +33,115 @@
     <xs:element name="getNamesLargerInputValueResponse">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
                 <xs:element name="names" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="inputMonumentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="country" type="xs:string"/>
+                <xs:element name="latitude" type="xs:double"/>
+                <xs:element name="longitude" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="inputMonumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findMonumentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="findMonumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="monument" type="tns:monument"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findCountryMonumentsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="findCountryMonumentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="countryMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="updateMonumentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="latitude" type="xs:double"/>
+                <xs:element name="longitude" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="updateMonumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="deleteMonumentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMonumentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 
     <xs:complexType name="monument">
         <xs:sequence>
-            <xs:element name="latitude" type="xs:double"/>
-            <xs:element name="longitude" type="xs:double"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="country" type="xs:string"/>
-            <xs:element name="counter" type="xs:long"/>
+            <xs:element name="latitude" type="xs:double"/>
+            <xs:element name="longitude" type="xs:double"/>
         </xs:sequence>
+
+
     </xs:complexType>
+
 
 </xs:schema>
