@@ -11,7 +11,7 @@ Installation instructions
 
 3.create a database named places.
 
-4.perform some monument inputs from schema.sql manually.
+4.perform some monument inputs from data.sql manually.
 
 5.In application.properties file use your own username and password.
 
