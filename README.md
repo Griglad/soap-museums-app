@@ -1,5 +1,5 @@
 # soap-monument-app
-A springboot soap web service which takes input data from the user (latitude,longitude) and finds the nearest monument in your area. 
+A springboot soap crud web service which takes input data from the user (latitude,longitude) and finds the nearest monument in your area. 
 The nearest monument has a counter which is increased +1 at each request.
 Another Api method based on the input value returns the monuments which have larger counter than the input value. 
 
