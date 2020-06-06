@@ -1,7 +1,12 @@
 package com.soap.utilities;
-
-import org.locationtech.jts.geom.*;
-
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
+/**
+ *
+ * @author Grigorios Ladas
+ *
+ */
 
 public class GeometryHelper {
 
@@ -10,6 +15,8 @@ public class GeometryHelper {
         Coordinate coord = new Coordinate(x, y);
         return gf.createPoint(coord);
     }
+
+
 
 
 }

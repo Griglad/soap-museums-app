@@ -2,20 +2,25 @@ package com.soap.utilities;
 
 import com.soap.jpa.DbMonument;
 import com.soap.model.Monument;
-import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
-@Component
+/**
+ * @author Grigorios Ladas
+ */
 public class MonumentUtil {
 
 
-    private static Set<Monument> monuments = new LinkedHashSet<>();
+    private static Set<DbMonument> dbMonuments = new LinkedHashSet<>();
 
+    public static Set<DbMonument> getMonuments() {
 
-    public static Set<Monument> getMonuments() {
-        return monuments;
+        return dbMonuments;
     }
+
 
     public static Monument fromdbToMonument(DbMonument dbMonument) {
         Monument monument = new Monument();
@@ -26,6 +31,14 @@ public class MonumentUtil {
         return monument;
     }
 
+    public static DbMonument fromMonumentToDb(Monument monument) {
+        DbMonument dbmonument = new DbMonument();
+        dbmonument.setName(monument.getName());
+        dbmonument.setPoint(GeometryHelper.createPoint(monument.getLatitude(), monument.getLongitude()));
+        dbmonument.setCountry(monument.getCountry());
+        return dbmonument;
+    }
+
     public static DbMonument retrieveMinDistanceMonument(Map<DbMonument, Double> monumentDoubleMap) {
 
         DbMonument monument = Collections.min(monumentDoubleMap.entrySet(), Map.Entry.comparingByValue()).getKey();
@@ -34,9 +47,10 @@ public class MonumentUtil {
 
     }
 
-    public static void update(Monument monument) {
-        long counter = monument.getCounter();
-        monument.setCounter(++counter);
+
+    public static void updateCounter(DbMonument dbMonument) {
+        long counter = dbMonument.getCounter();
+        dbMonument.setCounter(++counter);
     }
 
 

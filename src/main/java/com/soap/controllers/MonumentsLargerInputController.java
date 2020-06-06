@@ -1,6 +1,5 @@
 package com.soap.controllers;
 
-
 import com.soap.model.GetNamesLargerInputValueRequest;
 import com.soap.model.GetNamesLargerInputValueResponse;
 import com.soap.services.MonumentsLargerInputService;
@@ -10,12 +9,15 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+/**
+ * @author Grigorios Ladas
+ */
 @Endpoint
 public class MonumentsLargerInputController {
 
     private static final String NAMESPACE_URI = "http://www.soap.com/model";
 
-    private MonumentsLargerInputService monumentsLargerInputService;
+    private final MonumentsLargerInputService monumentsLargerInputService;
 
     @Autowired
     public MonumentsLargerInputController(MonumentsLargerInputService monumentsLargerInputService) {

@@ -4,7 +4,6 @@ import com.soap.dao.MonumentDao;
 import com.soap.jpa.DbMonument;
 import com.soap.model.GetNearestNameRequest;
 import com.soap.model.GetNearestNameResponse;
-import com.soap.model.Monument;
 import com.soap.utilities.GeometryHelper;
 import com.soap.utilities.Messages;
 import com.soap.utilities.MonumentUtil;
@@ -17,53 +16,52 @@ import org.springframework.stereotype.Service;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Grigorios Ladas
+ */
+
 @Service
-public class MonumentNameService {
+public class NearestMonumentNameService {
 
 
-    private MonumentDao monumentDao;
-    private Logger logger = LoggerFactory.getLogger(MonumentNameService.class);
+    private final MonumentDao monumentDao;
+    private static final Map<DbMonument, Double> monumentDistanceOnMap = new HashMap<>();
+    private Logger logger = LoggerFactory.getLogger(NearestMonumentNameService.class);
 
     @Autowired
-    public MonumentNameService(MonumentDao monumentDao) {
+    public NearestMonumentNameService(MonumentDao monumentDao) {
         this.monumentDao = monumentDao;
     }
 
 
-    //return a response with the nearest name based on distance between the input(lat&long) and the points in db
+    //Return a response with the nearest monument name based on distance between the input(lat&long) and the monuments coordinates in db
     public GetNearestNameResponse getNearestNameResponse(@RequestPayload GetNearestNameRequest request) {
         GetNearestNameResponse response = new GetNearestNameResponse();
+        if (request.getLatitude() != 0 && request.getLongitude() != 0) {
+            Point myPoint = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
+            List<DbMonument> dbMonuments = monumentDao.getAllDbMonuments();
+            if (dbMonuments != null) {
+                for (DbMonument dbmonument : dbMonuments) {
 
-
-            Point myPoint = GeometryHelper.createPoint(request.getLat(), request.getLong());
-            Map<DbMonument, Double> monumentDistanceOpMap = new HashMap<>();
-
-            for (DbMonument dbmonument : monumentDao.getAllDbMonuments()) {
-
-                monumentDistanceOpMap.put(dbmonument, new DistanceOp(myPoint, dbmonument.getPoint()).distance());
+                    monumentDistanceOnMap.put(dbmonument, new DistanceOp(myPoint, dbmonument.getPoint()).distance());
+                }
+                monumentDistanceOnMap.forEach((dbMonument, aDouble) -> logger.info("Distance from my point and monument " + dbMonument.getName() + " is " + aDouble + " units"));
+                DbMonument dbMonument = MonumentUtil.retrieveMinDistanceMonument(monumentDistanceOnMap);
+                MonumentUtil.updateCounter(dbMonument);
+                MonumentUtil.getMonuments().add(dbMonument);
+                response.setMessage(Messages.NEAREST_FOUND.info);
+                response.setMonumentName(dbMonument.getName());
+            } else {
+                response.setMessage(Messages.CHECK_DATABASE.info);
             }
-            monumentDistanceOpMap.forEach((dbMonument, aDouble) -> logger.info("Distance from my point and " + dbMonument.getName() + " is " + aDouble));
-            DbMonument dbMonument = MonumentUtil.retrieveMinDistanceMonument(monumentDistanceOpMap);
-            Monument monument = MonumentUtil.fromdbToMonument(dbMonument);
 
+        } else {
+            response.setMessage(Messages.CHECK_LAT_LONG.info);
 
-            MonumentUtil.update(monument);
-
-            MonumentUtil.getMonuments().add(monument);
-
-            response.setMessage(Messages.NEAREST_FOUND.info);
-            response.setMonumentName(dbMonument.getName());
-
-//        } else {
-//
-//            response.setMessage(Messages.INVALID_COORDINATES.info);
-//
-//
-//        }
-//        return response;
-
+        }
         return response;
 
     }
