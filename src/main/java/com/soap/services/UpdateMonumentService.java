@@ -38,6 +38,7 @@ public class UpdateMonumentService {
                 logger.info("Monument " + dbMonument.getName() + " has coordinates " + dbMonument.getPoint() + " before update");
                 Point point = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
                 dbMonument.setPoint(point);
+                dbMonument.setDescription(request.getDescription());
                 monumentDao.updateMonument(dbMonument);
                 response.setMessage(Messages.MONUMENT_UPDATED.info);
                 logger.info("Monument " + dbMonument.getName() + " has coordinates " + dbMonument.getPoint() + " after update");

@@ -29,6 +29,9 @@ public class NearestMonumentNameService {
 
     private final MonumentDao monumentDao;
     private static final Map<DbMonument, Double> monumentDistanceOnMap = new HashMap<>();
+    private static final double  startingLatitude = 35.01186;
+    private static final double  endingLongitude = 28.2225;
+
     private Logger logger = LoggerFactory.getLogger(NearestMonumentNameService.class);
 
     @Autowired
@@ -40,7 +43,7 @@ public class NearestMonumentNameService {
     //Return a response with the nearest monument name based on distance between the input(lat&long) and the monuments coordinates in db
     public GetNearestNameResponse getNearestNameResponse(@RequestPayload GetNearestNameRequest request) {
         GetNearestNameResponse response = new GetNearestNameResponse();
-        if (request.getLatitude() != 0 && request.getLongitude() != 0) {
+        if (request.getLatitude()>=startingLatitude && request.getLongitude() <= endingLongitude) {
             Point myPoint = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
             List<DbMonument> dbMonuments = monumentDao.getAllDbMonuments();
             if (dbMonuments != null) {
@@ -54,6 +57,7 @@ public class NearestMonumentNameService {
                 MonumentUtil.getMonuments().add(dbMonument);
                 response.setMessage(Messages.NEAREST_FOUND.info);
                 response.setMonumentName(dbMonument.getName());
+                response.setDescription(dbMonument.getDescription());
             } else {
                 response.setMessage(Messages.CHECK_DATABASE.info);
             }

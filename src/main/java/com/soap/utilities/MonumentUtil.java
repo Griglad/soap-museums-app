@@ -27,7 +27,8 @@ public class MonumentUtil {
         monument.setName(dbMonument.getName());
         monument.setLatitude(dbMonument.getPoint().getX());
         monument.setLongitude(dbMonument.getPoint().getY());
-        monument.setCountry(dbMonument.getCountry());
+        monument.setRegion(dbMonument.getRegion());
+        monument.setDescription(dbMonument.getDescription());
         return monument;
     }
 
@@ -35,7 +36,7 @@ public class MonumentUtil {
         DbMonument dbmonument = new DbMonument();
         dbmonument.setName(monument.getName());
         dbmonument.setPoint(GeometryHelper.createPoint(monument.getLatitude(), monument.getLongitude()));
-        dbmonument.setCountry(monument.getCountry());
+        dbmonument.setRegion(monument.getRegion());
         return dbmonument;
     }
 

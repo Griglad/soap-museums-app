@@ -21,6 +21,9 @@ public class InputMonumentService {
 
 
     private final MonumentDao monumentDao;
+    private static final double  startingLatitude = 35.01186;
+    private static final double  endingLongitude = 28.2225;
+
 
 
     private Logger logger = LoggerFactory.getLogger(InputMonumentService.class);
@@ -32,18 +35,18 @@ public class InputMonumentService {
 
 
     public InputMonumentResponse inputMonumentResponse(@RequestPayload InputMonumentRequest request) {
-        final String regex = "^\\D{4,25}+(\\s\\D{4,25}+)*$";
+        final String regex = "^\\D{4,35}+(\\s\\D{4,35}+)*$";
         InputMonumentResponse response = new InputMonumentResponse();
         Monument monument = new Monument();
         String monumentName = request.getName().toLowerCase();
         if (monumentDao.findMonument(monumentName) != null) {
             response.setMessage(Messages.MONUMENT_EXIST.info);
-        } else if (request.getName().matches(regex) && request.getCountry().matches(regex) &&
-                request.getLatitude() != 0 && request.getLongitude() != 0) {
+        } else if (request.getName().matches(regex) && request.getRegion().matches(regex) &&
+                request.getLatitude() >= startingLatitude && request.getLongitude() <= endingLongitude) {
             String name = request.getName();
-            String countryName = request.getCountry();
+            String regionName = request.getRegion();
             monument.setName(name.toUpperCase().trim());
-            monument.setCountry(countryName.toUpperCase().trim());
+            monument.setRegion(regionName.toUpperCase().trim());
             monument.setLatitude(request.getLatitude());
             monument.setLongitude(request.getLongitude());
             DbMonument dbMonument = MonumentUtil.fromMonumentToDb(monument);

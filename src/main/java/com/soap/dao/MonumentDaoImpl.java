@@ -53,9 +53,9 @@ public class MonumentDaoImpl implements MonumentDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<DbMonument> findMonumentsByCountry(String country) {
-        Query query = manager.createNativeQuery("select * from monument where lower(monument.country) = :country", DbMonument.class);
-        query.setParameter("country", country);
+    public List<DbMonument> findMonumentsByRegion(String region) {
+        Query query = manager.createNativeQuery("select * from monument where lower(monument.region) = :country", DbMonument.class);
+        query.setParameter("country", region);
         return query.getResultList();
     }
 

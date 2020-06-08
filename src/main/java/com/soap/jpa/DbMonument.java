@@ -23,10 +23,14 @@ public class DbMonument {
     private String name;
 
     @Column
-    private String country;
+    private String region;
+
+    @Column(columnDefinition = "text")
+    private String description;
 
     @Transient
     private long counter;
+
 
 
     public String getName() {
@@ -47,13 +51,6 @@ public class DbMonument {
         this.id = id;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public void setPoint(Point point) {
         this.point = point;
@@ -71,19 +68,36 @@ public class DbMonument {
         this.counter = counter;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DbMonument that = (DbMonument) o;
         return Objects.equals(name, that.name) &&
-                Objects.equals(country, that.country);
+                Objects.equals(region, that.region);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, country);
+        return Objects.hash(name, region);
     }
 }
+
 
 

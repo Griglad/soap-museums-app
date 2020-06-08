@@ -11,7 +11,7 @@ public interface MonumentDao {
 
     DbMonument findMonument(String name);
 
-    List<DbMonument> findMonumentsByCountry(String country);
+    List<DbMonument> findMonumentsByRegion(String country);
 
 
     void updateMonument(DbMonument dbMonument);
