@@ -7,6 +7,9 @@ insert into monument (country,name,point) values('TURKEI','AGIA SOFIA',st_GeomFr
 insert into monument (country,name,point) values('TURKEI','DOLMA BACHTSE',st_GeomFromText('POINT(41.039164 29.000459)',132))
 insert into monument (country,name,point) values('UNITED STATES','STATUE OF LIBERTY',st_GeomFromText('POINT(40.689249 -74.044500)',132))
 insert into monument (country,name,point) values('UNITED STATES','GOLDEN GATE BRIDGE',st_GeomFromText('POINT(37.819929 -122.478255)',132))
+insert into monument (country,name,point) values('GUATEMALA','TIKAL',st_GeomFromText('POINT(17.027242 -89.611038)',132))
+insert into monument (country,name,point) values('INDONESIA','BOROBUDUR TEMPLE COMPOUNDS',st_GeomFromText('POINT(-7.611429 110.203751)',132))
+insert into monument (country,name,point) values('ISRAEL','TEMPLE MOUNT',st_GeomFromText('POINT(31.778116 35.235993)',132))
 insert into monument (country,name,point) values('INDIA','TAJ MAHAL',st_GeomFromText('POINT(27.175015 78.042155)',132))
 insert into monument (country,name,point) values('INDIA','HAWA MAHAL',st_GeomFromText('POINT(26.923936 75.826744)',132))
 insert into monument (country,name,point) values('BRAZIL','CHRIST THE REEDEEMER',st_GeomFromText('POINT(-22.951916 -43.210487)',132))
@@ -18,4 +21,7 @@ insert into monument (country,name,point) values('ITALY','TOWER OF PISA',st_Geom
 insert into monument (country,name,point) values('EGYPT','THE GREAT SPHINX',st_GeomFromText('POINT(29.975269 31.137567)',132))
 insert into monument (country,name,point) values('EGYPT','PYRAMIDS OF GIZA',st_GeomFromText('POINT(29.979235 31.134202)',132))
 insert into monument (country,name,point) values('EGYPT','TEMPLE OF HATSHEPSUT',st_GeomFromText('POINT(25.738221 32.606631)',132))
+insert into monument (country,name,point) values('CHINA','THE GREAT WALL OF CHINA',st_GeomFromText('POINT(40.431908 116.570375)',132))
+insert into monument (country,name,point) values('JORDAN','PETRA OF JORDAN',st_GeomFromText('POINT(30.079493 35.444362)',132))
+insert into monument (country,name,point) values('PERU','PETRA OF JORDAN',st_GeomFromText('POINT(-13.163141 -72.544963)',132))
 
