@@ -44,7 +44,8 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
-                <xs:element name="Region" type="xs:string"/>
+                <xs:element name="place" type="xs:string"/>
+                <xs:element name="region" type="xs:string"/>
                 <xs:element name ="description" type="xs:string"/>
                 <xs:element name="latitude" type="xs:double"/>
                 <xs:element name="longitude" type="xs:double"/>
@@ -78,6 +79,24 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="findPlaceMonumentsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="place" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="findPlaceMonumentsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="placeMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
     <xs:element name="findRegionMonumentsRequest">
         <xs:complexType>
             <xs:sequence>
@@ -91,7 +110,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
-                <xs:element name="countryMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element name="regionMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -138,6 +157,7 @@
     <xs:complexType name="monument">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
+            <xs:element name="place" type="xs:string"/>
             <xs:element name="region" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
             <xs:element name="latitude" type="xs:double"/>

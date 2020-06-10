@@ -25,6 +25,9 @@ public class DbMonument {
     @Column
     private String region;
 
+    @Column
+    private String place;
+
     @Column(columnDefinition = "text")
     private String description;
 
@@ -84,18 +87,27 @@ public class DbMonument {
         this.description = description;
     }
 
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DbMonument that = (DbMonument) o;
         return Objects.equals(name, that.name) &&
-                Objects.equals(region, that.region);
+                Objects.equals(region, that.region) &&
+                Objects.equals(place, that.place);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, region);
+        return Objects.hash(name, region, place);
     }
 }
 

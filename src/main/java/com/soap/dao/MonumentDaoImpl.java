@@ -53,6 +53,15 @@ public class MonumentDaoImpl implements MonumentDao {
 
     @Override
     @SuppressWarnings("unchecked")
+    public List<DbMonument> findMonumentsByTown(String town) {
+        Query query = manager.createNativeQuery("select * from monument where lower(monument.town) = :town", DbMonument.class);
+        query.setParameter("town", town);
+        return query.getResultList();
+
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
     public List<DbMonument> findMonumentsByRegion(String region) {
         Query query = manager.createNativeQuery("select * from monument where lower(monument.region) = :country", DbMonument.class);
         query.setParameter("country", region);
@@ -69,7 +78,7 @@ public class MonumentDaoImpl implements MonumentDao {
     @Override
     public void deleteMonument(DbMonument dbMonument) {
 
-        manager.remove(manager.contains(dbMonument)?dbMonument: manager.merge(dbMonument));
+        manager.remove(manager.contains(dbMonument) ? dbMonument : manager.merge(dbMonument));
 
 
     }

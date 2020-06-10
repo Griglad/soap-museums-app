@@ -33,12 +33,12 @@ public class FindRegionMonumentsService {
     public FindRegionMonumentsResponse findCountryMonumentsResponse(@RequestPayload FindRegionMonumentsRequest request) {
 
         FindRegionMonumentsResponse response = new FindRegionMonumentsResponse();
-        String country = request.getRegion().toLowerCase().trim();
-        List<DbMonument> dbMonuments = monumentDao.findMonumentsByRegion(country);
+        String region = request.getRegion().toLowerCase().trim();
+        List<DbMonument> dbMonuments = monumentDao.findMonumentsByRegion(region);
         if (!dbMonuments.isEmpty()) {
             List<Monument> monuments = dbMonuments.stream().map(MonumentUtil::fromdbToMonument).collect(Collectors.toList());
-            response.setMessage(Messages.MONUMENTS_FOUND.info);
-            response.getCountryMonuments().addAll(monuments);
+            response.setMessage(region.toUpperCase() + Messages.MONUMENTS_FOUND.info);
+            response.getRegionMonuments().addAll(monuments);
 
         } else {
             response.setMessage(Messages.MONUMENTS_NOT_FOUND.info);

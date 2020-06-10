@@ -1,6 +1,7 @@
 package com.soap.dao;
 
 import com.soap.jpa.DbMonument;
+
 import java.util.List;
 
 public interface MonumentDao {
@@ -13,10 +14,12 @@ public interface MonumentDao {
 
     List<DbMonument> findMonumentsByRegion(String country);
 
+    List<DbMonument> findMonumentsByTown(String town);
 
     void updateMonument(DbMonument dbMonument);
 
 
     void deleteMonument(DbMonument dbMonument);
+
 
 }
