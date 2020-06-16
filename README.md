@@ -1,4 +1,4 @@
-# soap-monuments-app
+# soap-CulturalHeritage-app
 A Springboot soap crud web service which takes input data from the user (latitude,longitude) and finds the nearest cultural heritage site
 (monument,archaeological-site,museum)in Greece's area. 
 The nearest cultural heritage site has a counter which is increased +1 at each request.
