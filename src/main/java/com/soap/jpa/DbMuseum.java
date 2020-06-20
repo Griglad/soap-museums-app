@@ -8,8 +8,8 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "monument")
-public class DbMonument {
+@Table(name = "museum")
+public class DbMuseum {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,7 +99,7 @@ public class DbMonument {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DbMonument that = (DbMonument) o;
+        DbMuseum that = (DbMuseum) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(region, that.region) &&
                 Objects.equals(place, that.place);

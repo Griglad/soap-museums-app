@@ -3,7 +3,7 @@
            targetNamespace="http://www.soap.com/model" elementFormDefault="qualified">
 
 
-    <xs:element name="getNearestNameRequest">
+    <xs:element name="findNearestNameRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="latitude" type="xs:double"/>
@@ -12,17 +12,18 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getNearestNameResponse">
+    <xs:element name="findNearestNameResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
-                <xs:element name="monumentName" type="xs:string"/>
-                <xs:element name ="description" type="xs:string"/>
+                <xs:element name="museumName" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getNamesLargerInputValueRequest">
+
+    <xs:element name="findNamesLargerInputValueRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="counterValue" type="xs:long"/>
@@ -31,7 +32,7 @@
     </xs:element>
 
 
-    <xs:element name="getNamesLargerInputValueResponse">
+    <xs:element name="findNamesLargerInputValueResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
@@ -40,20 +41,20 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="inputMonumentRequest">
+    <xs:element name="inputMuseumRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="place" type="xs:string"/>
                 <xs:element name="region" type="xs:string"/>
-                <xs:element name ="description" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
                 <xs:element name="latitude" type="xs:double"/>
                 <xs:element name="longitude" type="xs:double"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="inputMonumentResponse">
+    <xs:element name="inputMuseumResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
@@ -61,7 +62,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="findMonumentRequest">
+    <xs:element name="findMuseumRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
@@ -70,16 +71,16 @@
     </xs:element>
 
 
-    <xs:element name="findMonumentResponse">
+    <xs:element name="findMuseumResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
-                <xs:element name="monument" type="tns:monument"/>
+                <xs:element name="museum" type="tns:museum"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="findPlaceMonumentsRequest">
+    <xs:element name="findByPlaceMuseumsRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="place" type="xs:string"/>
@@ -87,17 +88,17 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="findPlaceMonumentsResponse">
+    <xs:element name="findByPlaceMuseumsResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
-                <xs:element name="placeMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element name="museumsByPlace" type="tns:museum" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
 
-    <xs:element name="findRegionMonumentsRequest">
+    <xs:element name="findByRegionMuseumsRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="region" type="xs:string"/>
@@ -106,17 +107,17 @@
     </xs:element>
 
 
-    <xs:element name="findRegionMonumentsResponse">
+    <xs:element name="findByRegionMuseumsResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
-                <xs:element name="regionMonuments" type="tns:monument" maxOccurs="unbounded" minOccurs="1"/>
+                <xs:element name="museumsByRegion" type="tns:museum" maxOccurs="unbounded" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
 
-    <xs:element name="updateMonumentRequest">
+    <xs:element name="updateMuseumRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
@@ -128,7 +129,7 @@
     </xs:element>
 
 
-    <xs:element name="updateMonumentResponse">
+    <xs:element name="updateMuseumResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
@@ -137,7 +138,7 @@
     </xs:element>
 
 
-    <xs:element name="deleteMonumentRequest">
+    <xs:element name="deleteMuseumRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="name" type="xs:string"/>
@@ -145,7 +146,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="deleteMonumentResponse">
+    <xs:element name="deleteMuseumResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="message" type="xs:string"/>
@@ -154,7 +155,7 @@
     </xs:element>
 
 
-    <xs:complexType name="monument">
+    <xs:complexType name="museum">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="place" type="xs:string"/>

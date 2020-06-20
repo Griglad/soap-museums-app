@@ -17,6 +17,7 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
+    @SuppressWarnings("unchecked")
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
@@ -24,19 +25,19 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "monuments")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+    @Bean(name = "museums")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema museumsSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("MonumentsPort");
+        wsdl11Definition.setPortTypeName("MuseumsPort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://www.soap.com/model");
-        wsdl11Definition.setSchema(countriesSchema);
+        wsdl11Definition.setSchema(museumsSchema);
         return wsdl11Definition;
     }
 
     @Bean
     public XsdSchema countriesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("monuments.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("museums.xsd"));
     }
 
 
