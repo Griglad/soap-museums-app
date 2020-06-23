@@ -3,10 +3,7 @@ package com.soap.utilities;
 import com.soap.jpa.DbMuseum;
 import com.soap.model.Museum;
 
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -70,8 +67,9 @@ public class MuseumUtil {
     }
 
 
-    public static boolean isValidPattern(String s){
-        return inputPattern.matcher(s).matches();
+    public static boolean isValidPattern(String s1, String s2, String s3) {
+        String[] strings = {s1, s2, s3};
+        return Arrays.stream(strings).allMatch(e -> inputPattern.matcher(e).matches());
     }
 
 }

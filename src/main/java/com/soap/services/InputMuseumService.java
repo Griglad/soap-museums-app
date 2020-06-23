@@ -37,7 +37,7 @@ public class InputMuseumService {
         String MuseumName = request.getName().toLowerCase();
         if (museumDao.findMuseum(MuseumName) != null) {
             response.setMessage(Messages.MUSEUM_EXIST.info);
-        } else if (MuseumUtil.isValidPattern(request.getName()) && MuseumUtil.isValidPattern(request.getRegion()) && MuseumUtil.isValidPattern(request.getPlace()) &&
+        } else if (MuseumUtil.isValidPattern(request.getName(), request.getRegion(), request.getPlace()) &&
                 request.getLatitude() >= MuseumUtil.getStartingLatitude() && request.getLongitude() <= MuseumUtil.getEndingLongitude()) {
             String name = request.getName();
             String regionName = request.getRegion();
