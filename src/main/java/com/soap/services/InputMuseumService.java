@@ -32,13 +32,12 @@ public class InputMuseumService {
 
 
     public InputMuseumResponse inputMuseumResponse(@RequestPayload InputMuseumRequest request) {
-        final String regex = "^\\D{4,80}+(\\s\\D{4,80}+)*$";
         InputMuseumResponse response = new InputMuseumResponse();
         Museum Museum = new Museum();
         String MuseumName = request.getName().toLowerCase();
         if (museumDao.findMuseum(MuseumName) != null) {
             response.setMessage(Messages.MUSEUM_EXIST.info);
-        } else if (request.getName().matches(regex) && request.getRegion().matches(regex) && request.getPlace().matches(regex) &&
+        } else if (MuseumUtil.isValidPattern(request.getName()) && MuseumUtil.isValidPattern(request.getRegion()) && MuseumUtil.isValidPattern(request.getPlace()) &&
                 request.getLatitude() >= MuseumUtil.getStartingLatitude() && request.getLongitude() <= MuseumUtil.getEndingLongitude()) {
             String name = request.getName();
             String regionName = request.getRegion();

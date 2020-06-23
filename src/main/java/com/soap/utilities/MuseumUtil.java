@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * @author Grigorios Ladas
@@ -15,6 +16,7 @@ public class MuseumUtil {
 
     private static final double startingLatitude = 35.01186;
     private static final double endingLongitude = 28.2225;
+    private static final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
 
     private static Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
@@ -54,7 +56,6 @@ public class MuseumUtil {
 
     }
 
-
     public static void updateCounter(DbMuseum dbMuseum) {
         long counter = dbMuseum.getCounter();
         dbMuseum.setCounter(++counter);
@@ -68,5 +69,9 @@ public class MuseumUtil {
         return endingLongitude;
     }
 
+
+    public static boolean isValidPattern(String s){
+        return inputPattern.matcher(s).matches();
+    }
 
 }
