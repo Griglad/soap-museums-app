@@ -67,9 +67,9 @@ public class MuseumUtil {
     }
 
 
-    public static boolean isValidPattern(String s1, String s2, String s3) {
-        String[] strings = {s1, s2, s3};
-        return Arrays.stream(strings).allMatch(e -> inputPattern.matcher(e).matches());
+    public static boolean isValidPattern(String... params) {
+
+        return Arrays.stream(params).allMatch(e -> inputPattern.matcher(e).matches());
     }
 
 }
