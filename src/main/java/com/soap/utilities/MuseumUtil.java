@@ -2,7 +2,6 @@ package com.soap.utilities;
 
 import com.soap.jpa.DbMuseum;
 import com.soap.model.Museum;
-
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -14,7 +13,7 @@ public class MuseumUtil {
     private static final double startingLatitude = 35.01186;
     private static final double endingLongitude = 28.2225;
     private static final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-    private static Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
+    private static final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
 
 
@@ -70,6 +69,11 @@ public class MuseumUtil {
     public static boolean isValidPattern(String... params) {
 
         return Arrays.stream(params).allMatch(e -> inputPattern.matcher(e).matches());
+    }
+
+    public static boolean isValidCoordinates(double latitude,double longitude){
+        return Double.compare(latitude,startingLatitude)>=0 && Double.compare(longitude,endingLongitude)<=0;
+
     }
 
 

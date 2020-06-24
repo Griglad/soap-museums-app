@@ -37,7 +37,7 @@ public class InputMuseumService {
             logger.info(museumName + " already exists in database");
             response.setMessage(Messages.MUSEUM_EXIST.info);
         } else if (MuseumUtil.isValidPattern(request.getName(), request.getRegion(), request.getPlace()) &&
-                request.getLatitude() >= MuseumUtil.getStartingLatitude() && request.getLongitude() <= MuseumUtil.getEndingLongitude()) {
+                   MuseumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
             String name = request.getName();
             String regionName = request.getRegion();
             String townName = request.getPlace();

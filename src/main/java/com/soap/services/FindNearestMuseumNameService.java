@@ -40,7 +40,7 @@ public class FindNearestMuseumNameService {
     //Return a response with the nearest museums name based on distance between the input(lat&long) and the museums coordinates in db
     public FindNearestNameResponse FindNearestNameResponse(@RequestPayload FindNearestNameRequest request) {
         FindNearestNameResponse response = new FindNearestNameResponse();
-        if (request.getLatitude() >= MuseumUtil.getStartingLatitude() && request.getLongitude() <= MuseumUtil.getEndingLongitude()) {
+        if (MuseumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
             Point myPoint = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
             List<DbMuseum> dbMuseums = museumDao.getAllDbMuseums();
             if (dbMuseums != null) {
