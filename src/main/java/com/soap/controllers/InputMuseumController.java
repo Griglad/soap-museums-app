@@ -17,7 +17,6 @@ public class InputMuseumController {
 
 
     private static final String NAMESPACE_URI = "http://www.soap.com/model";
-
     private final InputMuseumService inputMuseumService;
 
 

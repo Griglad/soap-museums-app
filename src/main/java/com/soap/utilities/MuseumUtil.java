@@ -14,8 +14,8 @@ public class MuseumUtil {
     private static final double startingLatitude = 35.01186;
     private static final double endingLongitude = 28.2225;
     private static final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-
     private static Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
+
 
 
     public static Set<DbMuseum> getDbMuseums() {
@@ -71,5 +71,8 @@ public class MuseumUtil {
 
         return Arrays.stream(params).allMatch(e -> inputPattern.matcher(e).matches());
     }
+
+
+
 
 }

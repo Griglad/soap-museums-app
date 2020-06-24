@@ -15,6 +15,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 public class FindNearestMuseumNameController {
 
+
     private static final String NAMESPACE_URI = "http://www.soap.com/model";
     private final FindNearestMuseumNameService findNearestMuseumNameService;
 

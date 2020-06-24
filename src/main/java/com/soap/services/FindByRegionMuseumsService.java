@@ -7,6 +7,8 @@ import com.soap.model.FindByRegionMuseumsResponse;
 import com.soap.model.Museum;
 import com.soap.utilities.Messages;
 import com.soap.utilities.MuseumUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 public class FindByRegionMuseumsService {
 
     private final MuseumDao museumDao;
+    private final Logger logger = LoggerFactory.getLogger(FindByRegionMuseumsService.class);
 
 
     @Autowired
@@ -31,21 +34,20 @@ public class FindByRegionMuseumsService {
     }
 
     public FindByRegionMuseumsResponse findByRegionMuseumsResponse(@RequestPayload FindByRegionMuseumsRequest request) {
-
         FindByRegionMuseumsResponse response = new FindByRegionMuseumsResponse();
         String region = request.getRegion().toLowerCase().trim();
         List<DbMuseum> dbMuseums = museumDao.findMuseumsByRegion(region);
         if (!dbMuseums.isEmpty()) {
+            logger.info("Museums by regions found " + dbMuseums);
             List<Museum> museums = dbMuseums.stream().map(MuseumUtil::fromdbToMuseum).collect(Collectors.toList());
             response.setMessage(region.toUpperCase() + Messages.MUSEUMS_FOUND.info);
             response.getMuseumsByRegion().addAll(museums);
 
         } else {
+            logger.info("Museums from region " + region + " were not found");
             response.setMessage(region.toUpperCase() + Messages.MUSEUMS_NOT_FOUND.info);
         }
-
         return response;
-
     }
 
 

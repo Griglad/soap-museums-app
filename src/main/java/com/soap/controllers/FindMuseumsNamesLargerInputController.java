@@ -15,8 +15,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 public class FindMuseumsNamesLargerInputController {
 
-    private static final String NAMESPACE_URI = "http://www.soap.com/model";
 
+    private static final String NAMESPACE_URI = "http://www.soap.com/model";
     private final FindMuseumsNamesLargerInputService findMuseumsNamesLargerInputService;
 
     @Autowired

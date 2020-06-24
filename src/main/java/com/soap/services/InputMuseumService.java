@@ -21,9 +21,7 @@ public class InputMuseumService {
 
 
     private final MuseumDao museumDao;
-
-
-    private Logger logger = LoggerFactory.getLogger(InputMuseumService.class);
+    private final Logger logger = LoggerFactory.getLogger(InputMuseumService.class);
 
     @Autowired
     public InputMuseumService(MuseumDao museumDao) {
@@ -34,8 +32,9 @@ public class InputMuseumService {
     public InputMuseumResponse inputMuseumResponse(@RequestPayload InputMuseumRequest request) {
         InputMuseumResponse response = new InputMuseumResponse();
         Museum Museum = new Museum();
-        String MuseumName = request.getName().toLowerCase();
-        if (museumDao.findMuseum(MuseumName) != null) {
+        String museumName = request.getName().toLowerCase();
+        if (museumDao.findMuseum(museumName) != null) {
+            logger.info(museumName + " already exists in database");
             response.setMessage(Messages.MUSEUM_EXIST.info);
         } else if (MuseumUtil.isValidPattern(request.getName(), request.getRegion(), request.getPlace()) &&
                 request.getLatitude() >= MuseumUtil.getStartingLatitude() && request.getLongitude() <= MuseumUtil.getEndingLongitude()) {
@@ -50,10 +49,11 @@ public class InputMuseumService {
             Museum.setLatitude(request.getLatitude());
             Museum.setLongitude(request.getLongitude());
             DbMuseum dbMuseum = MuseumUtil.fromMuseumToDb(Museum);
-            logger.info(dbMuseum.getName() + " with " + dbMuseum.getPoint() + " is going to be added to the database");
             museumDao.addDbMuseum(dbMuseum);
+            logger.info(dbMuseum.getName() + " with " + dbMuseum.getPoint() + " was added into the database");
             response.setMessage(Messages.MUSEUM_ADDED.info);
         } else {
+            logger.info(museumName + " was not added in database please check your elements ");
             response.setMessage(Messages.MUSEUM_REJECTED.info);
         }
 

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class FindMuseumsNamesLargerInputService {
 
 
-    private Logger logger = LoggerFactory.getLogger(FindMuseumsNamesLargerInputService.class);
+    private final Logger logger = LoggerFactory.getLogger(FindMuseumsNamesLargerInputService.class);
 
 
     //Returning a response with a list of museums which their request counter is larger than the input value

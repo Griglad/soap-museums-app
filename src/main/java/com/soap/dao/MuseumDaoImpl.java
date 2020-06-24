@@ -2,7 +2,6 @@ package com.soap.dao;
 
 import com.soap.jpa.DbMuseum;
 import org.springframework.stereotype.Component;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;

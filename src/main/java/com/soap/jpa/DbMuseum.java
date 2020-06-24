@@ -109,6 +109,17 @@ public class DbMuseum {
     public int hashCode() {
         return Objects.hash(name, region, place);
     }
+
+    @Override
+    public String toString() {
+        return "DbMuseum{" +
+                "point=" + point +
+                ", name='" + name + '\'' +
+                ", region='" + region + '\'' +
+                ", place='" + place + '\'' +
+                ", description='" + description + '\'' +
+                '}'+"\n";
+    }
 }
 
 

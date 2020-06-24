@@ -22,8 +22,7 @@ public class UpdateMuseumService {
 
 
     private final MuseumDao museumDao;
-
-    private Logger logger = LoggerFactory.getLogger(FindNearestMuseumNameService.class);
+    private final Logger logger = LoggerFactory.getLogger(UpdateMuseumService.class);
 
     @Autowired
     public UpdateMuseumService(MuseumDao museumDao) {
@@ -45,8 +44,10 @@ public class UpdateMuseumService {
                 logger.info("Museum " + dbMuseum.getName() + " has coordinates " + dbMuseum.getPoint() + " after update");
             } else {
                 response.setMessage(Messages.MUSEUM_REJECTED.info);
+                logger.info("Museum " +museumName + " was not added in database");
             }
         } else {
+            logger.info("Check your coordinates");
             response.setMessage(Messages.MUSEUM_NOT_UPDATED.info);
         }
         return response;

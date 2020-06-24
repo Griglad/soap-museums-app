@@ -28,10 +28,8 @@ public class FindNearestMuseumNameService {
 
 
     private final MuseumDao museumDao;
-    private static final Map<DbMuseum, Double> museumDistanceOnMap = new HashMap<>();
-
-
-    private Logger logger = LoggerFactory.getLogger(FindNearestMuseumNameService.class);
+    private final Map<DbMuseum, Double> museumDistanceOnMap = new HashMap<>();
+    private final Logger logger = LoggerFactory.getLogger(FindNearestMuseumNameService.class);
 
     @Autowired
     public FindNearestMuseumNameService(MuseumDao museumDao) {
