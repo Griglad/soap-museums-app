@@ -31,24 +31,24 @@ public class InputMuseumService {
 
     public InputMuseumResponse inputMuseumResponse(@RequestPayload InputMuseumRequest request) {
         InputMuseumResponse response = new InputMuseumResponse();
-        Museum Museum = new Museum();
         String museumName = request.getName().toLowerCase();
         if (museumDao.findMuseum(museumName) != null) {
             logger.info(museumName + " already exists in database");
             response.setMessage(Messages.MUSEUM_EXIST.info);
         } else if (MuseumUtil.isValidPattern(request.getName(), request.getRegion(), request.getPlace()) &&
                    MuseumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
+            Museum museum = new Museum();
             String name = request.getName();
             String regionName = request.getRegion();
             String townName = request.getPlace();
             String description = request.getDescription();
-            Museum.setName(name.toUpperCase().trim());
-            Museum.setPlace(townName.toUpperCase().trim());
-            Museum.setRegion(regionName.toUpperCase().trim());
-            Museum.setDescription(description);
-            Museum.setLatitude(request.getLatitude());
-            Museum.setLongitude(request.getLongitude());
-            DbMuseum dbMuseum = MuseumUtil.fromMuseumToDb(Museum);
+            museum.setName(name.toUpperCase().trim());
+            museum.setPlace(townName.toUpperCase().trim());
+            museum.setRegion(regionName.toUpperCase().trim());
+            museum.setDescription(description);
+            museum.setLatitude(request.getLatitude());
+            museum.setLongitude(request.getLongitude());
+            DbMuseum dbMuseum = MuseumUtil.fromMuseumToDb(museum);
             museumDao.addDbMuseum(dbMuseum);
             logger.info(dbMuseum.getName() + " with " + dbMuseum.getPoint() + " was added into the database");
             response.setMessage(Messages.MUSEUM_ADDED.info);

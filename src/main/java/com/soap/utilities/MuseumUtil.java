@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * @author Grigorios Ladas
  */
-public class MuseumUtil {
+public final class MuseumUtil {
 
     private static final double startingLatitude = 35.01186;
     private static final double endingLongitude = 28.2225;
@@ -16,6 +16,10 @@ public class MuseumUtil {
     private static final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
 
+
+    private MuseumUtil(){
+
+    }
 
     public static Set<DbMuseum> getDbMuseums() {
 
@@ -75,8 +79,6 @@ public class MuseumUtil {
         return Double.compare(latitude,startingLatitude)>=0 && Double.compare(longitude,endingLongitude)<=0;
 
     }
-
-
 
 
 }
