@@ -12,9 +12,9 @@ import java.util.Objects;
 public class DbMuseum {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
-    private long id;
+    private Long id;
 
     @Column
     private Point point;
@@ -35,6 +35,14 @@ public class DbMuseum {
     private long counter;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;
@@ -43,15 +51,6 @@ public class DbMuseum {
 
     public void setName(String value) {
         this.name = value;
-    }
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
 
@@ -118,7 +117,7 @@ public class DbMuseum {
                 ", region='" + region + '\'' +
                 ", place='" + place + '\'' +
                 ", description='" + description + '\'' +
-                '}'+"\n";
+                '}' + "\n";
     }
 }
 
