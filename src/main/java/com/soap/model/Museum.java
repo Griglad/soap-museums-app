@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for museum complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="museum">
  *   &lt;complexContent>
@@ -35,17 +35,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "museum", propOrder = {
-    "name",
-    "place",
-    "region",
-    "description",
-    "latitude",
-    "longitude"
+        "name",
+        "place",
+        "region",
+        "description",
+        "latitude",
+        "longitude"
 })
 public class Museum {
 
@@ -62,11 +60,9 @@ public class Museum {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -74,11 +70,9 @@ public class Museum {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -86,11 +80,9 @@ public class Museum {
 
     /**
      * Gets the value of the place property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPlace() {
         return place;
@@ -98,11 +90,9 @@ public class Museum {
 
     /**
      * Sets the value of the place property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPlace(String value) {
         this.place = value;
@@ -110,11 +100,9 @@ public class Museum {
 
     /**
      * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getRegion() {
         return region;
@@ -122,11 +110,9 @@ public class Museum {
 
     /**
      * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setRegion(String value) {
         this.region = value;
@@ -134,11 +120,9 @@ public class Museum {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -146,11 +130,9 @@ public class Museum {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -158,7 +140,6 @@ public class Museum {
 
     /**
      * Gets the value of the latitude property.
-     * 
      */
     public double getLatitude() {
         return latitude;
@@ -166,7 +147,6 @@ public class Museum {
 
     /**
      * Sets the value of the latitude property.
-     * 
      */
     public void setLatitude(double value) {
         this.latitude = value;
@@ -174,7 +154,6 @@ public class Museum {
 
     /**
      * Gets the value of the longitude property.
-     * 
      */
     public double getLongitude() {
         return longitude;
@@ -182,7 +161,6 @@ public class Museum {
 
     /**
      * Sets the value of the longitude property.
-     * 
      */
     public void setLongitude(double value) {
         this.longitude = value;

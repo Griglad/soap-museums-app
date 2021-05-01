@@ -12,18 +12,17 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.soap.model package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.soap.model package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -31,14 +30,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.soap.model
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link InputMuseumResponse }
-     * 
      */
     public InputMuseumResponse createInputMuseumResponse() {
         return new InputMuseumResponse();
@@ -46,7 +43,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindNamesLargerInputValueResponse }
-     * 
      */
     public FindNamesLargerInputValueResponse createFindNamesLargerInputValueResponse() {
         return new FindNamesLargerInputValueResponse();
@@ -54,7 +50,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindNamesLargerInputValueRequest }
-     * 
      */
     public FindNamesLargerInputValueRequest createFindNamesLargerInputValueRequest() {
         return new FindNamesLargerInputValueRequest();
@@ -62,7 +57,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindMuseumRequest }
-     * 
      */
     public FindMuseumRequest createFindMuseumRequest() {
         return new FindMuseumRequest();
@@ -70,7 +64,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateMuseumRequest }
-     * 
      */
     public UpdateMuseumRequest createUpdateMuseumRequest() {
         return new UpdateMuseumRequest();
@@ -78,7 +71,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteMuseumRequest }
-     * 
      */
     public DeleteMuseumRequest createDeleteMuseumRequest() {
         return new DeleteMuseumRequest();
@@ -86,7 +78,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DeleteMuseumResponse }
-     * 
      */
     public DeleteMuseumResponse createDeleteMuseumResponse() {
         return new DeleteMuseumResponse();
@@ -94,7 +85,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindNearestNameRequest }
-     * 
      */
     public FindNearestNameRequest createFindNearestNameRequest() {
         return new FindNearestNameRequest();
@@ -102,7 +92,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindByPlaceMuseumsResponse }
-     * 
      */
     public FindByPlaceMuseumsResponse createFindByPlaceMuseumsResponse() {
         return new FindByPlaceMuseumsResponse();
@@ -110,7 +99,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Museum }
-     * 
      */
     public Museum createMuseum() {
         return new Museum();
@@ -118,7 +106,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link UpdateMuseumResponse }
-     * 
      */
     public UpdateMuseumResponse createUpdateMuseumResponse() {
         return new UpdateMuseumResponse();
@@ -126,7 +113,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindNearestNameResponse }
-     * 
      */
     public FindNearestNameResponse createFindNearestNameResponse() {
         return new FindNearestNameResponse();
@@ -134,7 +120,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindByPlaceMuseumsRequest }
-     * 
      */
     public FindByPlaceMuseumsRequest createFindByPlaceMuseumsRequest() {
         return new FindByPlaceMuseumsRequest();
@@ -142,7 +127,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InputMuseumRequest }
-     * 
      */
     public InputMuseumRequest createInputMuseumRequest() {
         return new InputMuseumRequest();
@@ -150,7 +134,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindByRegionMuseumsRequest }
-     * 
      */
     public FindByRegionMuseumsRequest createFindByRegionMuseumsRequest() {
         return new FindByRegionMuseumsRequest();
@@ -158,7 +141,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindByRegionMuseumsResponse }
-     * 
      */
     public FindByRegionMuseumsResponse createFindByRegionMuseumsResponse() {
         return new FindByRegionMuseumsResponse();
@@ -166,7 +148,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link FindMuseumResponse }
-     * 
      */
     public FindMuseumResponse createFindMuseumResponse() {
         return new FindMuseumResponse();

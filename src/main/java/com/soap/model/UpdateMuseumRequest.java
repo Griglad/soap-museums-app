@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -34,15 +34,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name",
-    "description",
-    "latitude",
-    "longitude"
+        "name",
+        "description",
+        "latitude",
+        "longitude"
 })
 @XmlRootElement(name = "updateMuseumRequest")
 public class UpdateMuseumRequest {
@@ -56,11 +54,9 @@ public class UpdateMuseumRequest {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -68,11 +64,9 @@ public class UpdateMuseumRequest {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -80,11 +74,9 @@ public class UpdateMuseumRequest {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -92,11 +84,9 @@ public class UpdateMuseumRequest {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -104,7 +94,6 @@ public class UpdateMuseumRequest {
 
     /**
      * Gets the value of the latitude property.
-     * 
      */
     public double getLatitude() {
         return latitude;
@@ -112,7 +101,6 @@ public class UpdateMuseumRequest {
 
     /**
      * Sets the value of the latitude property.
-     * 
      */
     public void setLatitude(double value) {
         this.latitude = value;
@@ -120,7 +108,6 @@ public class UpdateMuseumRequest {
 
     /**
      * Gets the value of the longitude property.
-     * 
      */
     public double getLongitude() {
         return longitude;
@@ -128,7 +115,6 @@ public class UpdateMuseumRequest {
 
     /**
      * Sets the value of the longitude property.
-     * 
      */
     public void setLongitude(double value) {
         this.longitude = value;
