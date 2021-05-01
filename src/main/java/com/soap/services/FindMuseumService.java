@@ -30,12 +30,13 @@ public class FindMuseumService {
 
     public FindMuseumResponse findMuseumResponse(@RequestPayload FindMuseumRequest request) {
         FindMuseumResponse response = new FindMuseumResponse();
+        MuseumUtil museumUtil = MuseumUtil.createInstance();
         String museumName = request.getName().toLowerCase().trim();
         DbMuseum dbMuseum = MuseumDao.findMuseum(museumName);
         if (dbMuseum != null) {
             logger.info("Museum which was found is " + museumName);
             response.setMessage(Messages.MUSEUM_FOUND.info);
-            Museum museum = MuseumUtil.createInstance().fromdbToMuseum(dbMuseum);
+            Museum museum = museumUtil.fromdbToMuseum(dbMuseum);
             response.setMuseum(museum);
             return response;
         } else {
