@@ -26,9 +26,9 @@ public class FindByPlaceMuseumsService {
     private final Logger logger = LoggerFactory.getLogger(FindByPlaceMuseumsService.class);
 
     @Autowired
-    public FindByPlaceMuseumsService(MuseumDao monumenDao) {
+    public FindByPlaceMuseumsService(MuseumDao museumDao) {
 
-        this.museumDao = monumenDao;
+        this.museumDao = museumDao;
 
     }
 

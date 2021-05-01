@@ -22,9 +22,9 @@ public class DeleteMuseumService {
 
 
     @Autowired
-    public DeleteMuseumService(MuseumDao monumenDao) {
+    public DeleteMuseumService(MuseumDao museumDao) {
 
-        this.museumDao = monumenDao;
+        this.museumDao = museumDao;
 
     }
 

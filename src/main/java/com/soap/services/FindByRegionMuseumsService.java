@@ -27,9 +27,9 @@ public class FindByRegionMuseumsService {
 
 
     @Autowired
-    public FindByRegionMuseumsService(MuseumDao monumenDao) {
+    public FindByRegionMuseumsService(MuseumDao museumDao) {
 
-        this.museumDao = monumenDao;
+        this.museumDao = museumDao;
 
     }
 
