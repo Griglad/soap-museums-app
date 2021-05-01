@@ -40,8 +40,8 @@ public class FindNearestMuseumNameService {
     //Return a response with the nearest museums name based on distance between the input(lat&long) and the museums coordinates in db
     public FindNearestNameResponse FindNearestNameResponse(@RequestPayload FindNearestNameRequest request) {
         FindNearestNameResponse response = new FindNearestNameResponse();
-        MuseumUtil museumUtil = MuseumUtil.createInstance();
-        if (museumUtil.isValidCoordinates(request.getLatitude(), request.getLongitude())) {
+        MuseumUtil util = MuseumUtil.createInstance();
+        if (util.isValidCoordinates(request.getLatitude(), request.getLongitude())) {
             Point myPoint = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
             List<DbMuseum> dbMuseums = museumDao.getAllDbMuseums();
             if (dbMuseums != null) {
@@ -50,9 +50,9 @@ public class FindNearestMuseumNameService {
                     museumDistanceOnMap.put(dbmuseum, new DistanceOp(myPoint, dbmuseum.getPoint()).distance());
                 }
                 museumDistanceOnMap.forEach((dbMuseum, aDouble) -> logger.info("Distance from my point and museum " + dbMuseum.getName() + " is " + aDouble + " units"));
-                DbMuseum dbMuseum = museumUtil.retrieveMinDistanceMuseum(museumDistanceOnMap);
-                museumUtil.updateCounter(dbMuseum);
-                museumUtil.getDbMuseums().add(dbMuseum);
+                DbMuseum dbMuseum = util.retrieveMinDistanceMuseum(museumDistanceOnMap);
+                util.updateCounter(dbMuseum);
+                MuseumUtil.getDbMuseums().add(dbMuseum);
                 response.setMessage(Messages.NEAREST_FOUND.info);
                 response.setMuseumName(dbMuseum.getName());
                 response.setDescription(dbMuseum.getDescription());

@@ -14,14 +14,14 @@ public final class MuseumUtil {
     private final double startingLatitude = 35.01186;
     private final double endingLongitude = 28.2225;
     private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-    private final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
+    private static final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
 
     public static MuseumUtil createInstance() {
         return new MuseumUtil();
     }
 
-    public Set<DbMuseum> getDbMuseums() {
+    public static Set<DbMuseum> getDbMuseums() {
 
         return dbMuseums;
     }
@@ -60,15 +60,6 @@ public final class MuseumUtil {
         long counter = dbMuseum.getCounter();
         dbMuseum.setCounter(++counter);
     }
-
-    public double getStartingLatitude() {
-        return startingLatitude;
-    }
-
-    public double getEndingLongitude() {
-        return endingLongitude;
-    }
-
 
     public boolean isValidPattern(String... params) {
 

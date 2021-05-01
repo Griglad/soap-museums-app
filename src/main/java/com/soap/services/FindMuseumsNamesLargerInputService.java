@@ -26,9 +26,8 @@ public class FindMuseumsNamesLargerInputService {
     //Returning a response with a list of museums which their request counter is larger than the input value
     public FindNamesLargerInputValueResponse getPointsLargerResponse(@RequestPayload FindNamesLargerInputValueRequest request) {
         FindNamesLargerInputValueResponse response = new FindNamesLargerInputValueResponse();
-        MuseumUtil museumUtil = MuseumUtil.createInstance();
         long value = request.getCounterValue();
-        List<DbMuseum> largerThanCounterVal = museumUtil.getDbMuseums().stream().filter(e -> e.getCounter() > value).collect(Collectors.toList());
+        List<DbMuseum> largerThanCounterVal = MuseumUtil.getDbMuseums().stream().filter(e -> e.getCounter() > value).collect(Collectors.toList());
         List<String> museumNames = largerThanCounterVal.stream().map(DbMuseum::getName).collect(Collectors.toList());
         logger.info("museum names larger than " + request.getCounterValue() + " counter value are " + museumNames);
         if (!museumNames.isEmpty()) {
