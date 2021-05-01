@@ -35,7 +35,7 @@ public class DeleteMuseumService {
         if (dbMuseum != null) {
             museumDao.deleteMuseum(dbMuseum);
             response.setMessage(Messages.MUSEUM_DELETED.info);
-            logger.info( museumName + " was deleted from database");
+            logger.info(museumName + " was deleted from database");
         } else {
             response.setMessage(Messages.MUSEUM_NOT_FOUND.info);
             logger.info(museumName + " was not found in database");

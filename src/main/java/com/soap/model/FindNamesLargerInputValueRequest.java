@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -30,12 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "counterValue"
+        "counterValue"
 })
 @XmlRootElement(name = "findNamesLargerInputValueRequest")
 public class FindNamesLargerInputValueRequest {
@@ -44,7 +42,6 @@ public class FindNamesLargerInputValueRequest {
 
     /**
      * Gets the value of the counterValue property.
-     * 
      */
     public long getCounterValue() {
         return counterValue;
@@ -52,7 +49,6 @@ public class FindNamesLargerInputValueRequest {
 
     /**
      * Sets the value of the counterValue property.
-     * 
      */
     public void setCounterValue(long value) {
         this.counterValue = value;

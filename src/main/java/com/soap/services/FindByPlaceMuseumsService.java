@@ -15,6 +15,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
  * @author Grigorios Ladas
  */
@@ -36,7 +37,7 @@ public class FindByPlaceMuseumsService {
     public FindByPlaceMuseumsResponse findByPlaceMuseumsResponse(@RequestPayload FindByPlaceMuseumsRequest request) {
         FindByPlaceMuseumsResponse response = new FindByPlaceMuseumsResponse();
         MuseumUtil museumUtil = MuseumUtil.createInstance();
-        String place= request.getPlace().toLowerCase().trim();
+        String place = request.getPlace().toLowerCase().trim();
         List<DbMuseum> dbMuseums = museumDao.findMuseumsByPlace(place);
         if (!dbMuseums.isEmpty()) {
             logger.info("museums by place found " + dbMuseums);

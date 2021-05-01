@@ -32,7 +32,7 @@ public class UpdateMuseumService {
     public UpdateMuseumResponse UpdateMuseumResponse(@RequestPayload UpdateMuseumRequest request) {
         UpdateMuseumResponse response = new UpdateMuseumResponse();
         MuseumUtil museumUtil = MuseumUtil.createInstance();
-        if (museumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
+        if (museumUtil.isValidCoordinates(request.getLatitude(), request.getLongitude())) {
             String museumName = request.getName().toLowerCase();
             DbMuseum dbMuseum = museumDao.findMuseum(museumName);
             if (dbMuseum != null) {
@@ -45,7 +45,7 @@ public class UpdateMuseumService {
                 logger.info("Museum " + dbMuseum.getName() + " has coordinates " + dbMuseum.getPoint() + " after update");
             } else {
                 response.setMessage(Messages.MUSEUM_REJECTED.info);
-                logger.info("Museum " +museumName + " was not added in database");
+                logger.info("Museum " + museumName + " was not added in database");
             }
         } else {
             logger.info("Check your coordinates");

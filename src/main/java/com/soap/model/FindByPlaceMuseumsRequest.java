@@ -17,9 +17,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -31,12 +31,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "place"
+        "place"
 })
 @XmlRootElement(name = "findByPlaceMuseumsRequest")
 public class FindByPlaceMuseumsRequest {
@@ -46,11 +44,9 @@ public class FindByPlaceMuseumsRequest {
 
     /**
      * Gets the value of the place property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPlace() {
         return place;
@@ -58,11 +54,9 @@ public class FindByPlaceMuseumsRequest {
 
     /**
      * Sets the value of the place property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPlace(String value) {
         this.place = value;

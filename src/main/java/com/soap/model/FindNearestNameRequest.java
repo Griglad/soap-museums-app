@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -31,13 +31,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "latitude",
-    "longitude"
+        "latitude",
+        "longitude"
 })
 @XmlRootElement(name = "findNearestNameRequest")
 public class FindNearestNameRequest {
@@ -47,7 +45,6 @@ public class FindNearestNameRequest {
 
     /**
      * Gets the value of the latitude property.
-     * 
      */
     public double getLatitude() {
         return latitude;
@@ -55,7 +52,6 @@ public class FindNearestNameRequest {
 
     /**
      * Sets the value of the latitude property.
-     * 
      */
     public void setLatitude(double value) {
         this.latitude = value;
@@ -63,7 +59,6 @@ public class FindNearestNameRequest {
 
     /**
      * Gets the value of the longitude property.
-     * 
      */
     public double getLongitude() {
         return longitude;
@@ -71,7 +66,6 @@ public class FindNearestNameRequest {
 
     /**
      * Sets the value of the longitude property.
-     * 
      */
     public void setLongitude(double value) {
         this.longitude = value;
