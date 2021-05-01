@@ -35,11 +35,12 @@ public class FindByPlaceMuseumsService {
 
     public FindByPlaceMuseumsResponse findByPlaceMuseumsResponse(@RequestPayload FindByPlaceMuseumsRequest request) {
         FindByPlaceMuseumsResponse response = new FindByPlaceMuseumsResponse();
+        MuseumUtil museumUtil = MuseumUtil.createInstance();
         String place= request.getPlace().toLowerCase().trim();
         List<DbMuseum> dbMuseums = museumDao.findMuseumsByPlace(place);
         if (!dbMuseums.isEmpty()) {
             logger.info("museums by place found " + dbMuseums);
-            List<Museum> Museums = dbMuseums.stream().map(MuseumUtil::fromdbToMuseum).collect(Collectors.toList());
+            List<Museum> Museums = dbMuseums.stream().map(museumUtil::fromdbToMuseum).collect(Collectors.toList());
             response.setMessage(place.toUpperCase() + Messages.MUSEUMS_FOUND.info);
             response.getMuseumsByPlace().addAll(Museums);
 

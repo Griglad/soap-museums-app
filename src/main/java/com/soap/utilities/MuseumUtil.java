@@ -2,6 +2,7 @@ package com.soap.utilities;
 
 import com.soap.jpa.DbMuseum;
 import com.soap.model.Museum;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -10,24 +11,23 @@ import java.util.regex.Pattern;
  */
 public final class MuseumUtil {
 
-    private static final double startingLatitude = 35.01186;
-    private static final double endingLongitude = 28.2225;
-    private static final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-    private static final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
+    private final double startingLatitude = 35.01186;
+    private final double endingLongitude = 28.2225;
+    private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
+    private final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
 
-
-    private MuseumUtil(){
-
+    public static MuseumUtil createInstance() {
+        return new MuseumUtil();
     }
 
-    public static Set<DbMuseum> getDbMuseums() {
+    public Set<DbMuseum> getDbMuseums() {
 
         return dbMuseums;
     }
 
 
-    public static Museum fromdbToMuseum(DbMuseum dbMuseum) {
+    public Museum fromdbToMuseum(DbMuseum dbMuseum) {
         Museum museum = new Museum();
         museum.setName(dbMuseum.getName());
         museum.setLatitude(dbMuseum.getPoint().getX());
@@ -38,7 +38,7 @@ public final class MuseumUtil {
         return museum;
     }
 
-    public static DbMuseum fromMuseumToDb(Museum museum) {
+    public DbMuseum fromMuseumToDb(Museum museum) {
         DbMuseum dbmuseum = new DbMuseum();
         dbmuseum.setName(museum.getName());
         dbmuseum.setRegion(museum.getRegion());
@@ -48,7 +48,7 @@ public final class MuseumUtil {
         return dbmuseum;
     }
 
-    public static DbMuseum retrieveMinDistanceMuseum(Map<DbMuseum, Double> museumDoubleMap) {
+    public DbMuseum retrieveMinDistanceMuseum(Map<DbMuseum, Double> museumDoubleMap) {
 
         DbMuseum museum = Collections.min(museumDoubleMap.entrySet(), Map.Entry.comparingByValue()).getKey();
 
@@ -56,27 +56,27 @@ public final class MuseumUtil {
 
     }
 
-    public static void updateCounter(DbMuseum dbMuseum) {
+    public void updateCounter(DbMuseum dbMuseum) {
         long counter = dbMuseum.getCounter();
         dbMuseum.setCounter(++counter);
     }
 
-    public static double getStartingLatitude() {
+    public double getStartingLatitude() {
         return startingLatitude;
     }
 
-    public static double getEndingLongitude() {
+    public double getEndingLongitude() {
         return endingLongitude;
     }
 
 
-    public static boolean isValidPattern(String... params) {
+    public boolean isValidPattern(String... params) {
 
         return Arrays.stream(params).allMatch(e -> inputPattern.matcher(e).matches());
     }
 
-    public static boolean isValidCoordinates(double latitude,double longitude){
-        return Double.compare(latitude,startingLatitude)>=0 && Double.compare(longitude,endingLongitude)<=0;
+    public boolean isValidCoordinates(double latitude, double longitude) {
+        return Double.compare(latitude, startingLatitude) >= 0 && Double.compare(longitude, endingLongitude) <= 0;
 
     }
 

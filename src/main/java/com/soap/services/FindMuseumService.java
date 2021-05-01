@@ -35,7 +35,7 @@ public class FindMuseumService {
         if (dbMuseum != null) {
             logger.info("Museum which was found is " + museumName);
             response.setMessage(Messages.MUSEUM_FOUND.info);
-            Museum museum = MuseumUtil.fromdbToMuseum(dbMuseum);
+            Museum museum = MuseumUtil.createInstance().fromdbToMuseum(dbMuseum);
             response.setMuseum(museum);
             return response;
         } else {

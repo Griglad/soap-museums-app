@@ -35,11 +35,12 @@ public class FindByRegionMuseumsService {
 
     public FindByRegionMuseumsResponse findByRegionMuseumsResponse(@RequestPayload FindByRegionMuseumsRequest request) {
         FindByRegionMuseumsResponse response = new FindByRegionMuseumsResponse();
+        MuseumUtil museumUtil = MuseumUtil.createInstance();
         String region = request.getRegion().toLowerCase().trim();
         List<DbMuseum> dbMuseums = museumDao.findMuseumsByRegion(region);
         if (!dbMuseums.isEmpty()) {
             logger.info("Museums by regions found " + dbMuseums);
-            List<Museum> museums = dbMuseums.stream().map(MuseumUtil::fromdbToMuseum).collect(Collectors.toList());
+            List<Museum> museums = dbMuseums.stream().map(museumUtil::fromdbToMuseum).collect(Collectors.toList());
             response.setMessage(region.toUpperCase() + Messages.MUSEUMS_FOUND.info);
             response.getMuseumsByRegion().addAll(museums);
 

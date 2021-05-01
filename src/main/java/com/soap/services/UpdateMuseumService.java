@@ -31,7 +31,8 @@ public class UpdateMuseumService {
 
     public UpdateMuseumResponse UpdateMuseumResponse(@RequestPayload UpdateMuseumRequest request) {
         UpdateMuseumResponse response = new UpdateMuseumResponse();
-        if (MuseumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
+        MuseumUtil museumUtil = MuseumUtil.createInstance();
+        if (museumUtil.isValidCoordinates(request.getLatitude(),request.getLongitude())) {
             String museumName = request.getName().toLowerCase();
             DbMuseum dbMuseum = museumDao.findMuseum(museumName);
             if (dbMuseum != null) {
