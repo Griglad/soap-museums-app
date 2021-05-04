@@ -6,7 +6,6 @@ import com.soap.model.FindNearestNameRequest;
 import com.soap.model.FindNearestNameResponse;
 import com.soap.utilities.GeometryHelper;
 import com.soap.utilities.Messages;
-import com.soap.utilities.MuseumCollections;
 import com.soap.utilities.MuseumUtil;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.operation.distance.DistanceOp;
@@ -27,9 +26,9 @@ public class FindNearestMuseumNameService {
 
 
     private final MuseumDao museumDao;
-    private final Set<DbMuseum> dbMuseumSet = MuseumCollections.getDbMuseumSet();
-    private final Map<DbMuseum, Double> museumDistanceOnMap = MuseumCollections.getMuseumDistanceOnMap();
+    private final Map<DbMuseum, Double> museumDistanceOnMap = new HashMap<>();
     private final Logger logger = LoggerFactory.getLogger(FindNearestMuseumNameService.class);
+    private static final Set<DbMuseum> dbMuseumSet = new LinkedHashSet<>();
 
     @Autowired
     public FindNearestMuseumNameService(MuseumDao museumDao) {
@@ -68,6 +67,10 @@ public class FindNearestMuseumNameService {
 
     }
 
+
+    public static Set<DbMuseum> getDbMuseumSet() {
+        return dbMuseumSet;
+    }
 
 }
 
