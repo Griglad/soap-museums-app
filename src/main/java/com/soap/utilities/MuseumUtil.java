@@ -14,17 +14,13 @@ public final class MuseumUtil {
     private final double startingLatitude = 35.01186;
     private final double endingLongitude = 28.2225;
     private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-    private static final Set<DbMuseum> dbMuseums = new LinkedHashSet<>();
 
 
-    public static MuseumUtil createInstance() {
+
+    public static MuseumUtil getInstance() {
         return new MuseumUtil();
     }
 
-    public static Set<DbMuseum> getDbMuseums() {
-
-        return dbMuseums;
-    }
 
 
     public Museum fromdbToMuseum(DbMuseum dbMuseum) {

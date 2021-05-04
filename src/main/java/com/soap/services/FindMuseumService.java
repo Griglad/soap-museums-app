@@ -30,7 +30,7 @@ public class FindMuseumService {
 
     public FindMuseumResponse findMuseumResponse(@RequestPayload FindMuseumRequest request) {
         FindMuseumResponse response = new FindMuseumResponse();
-        MuseumUtil museumUtil = MuseumUtil.createInstance();
+        MuseumUtil museumUtil = MuseumUtil.getInstance();
         String museumName = request.getName().toLowerCase().trim();
         DbMuseum dbMuseum = MuseumDao.findMuseum(museumName);
         if (dbMuseum != null) {

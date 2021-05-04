@@ -35,7 +35,7 @@ public class FindByRegionMuseumsService {
 
     public FindByRegionMuseumsResponse findByRegionMuseumsResponse(@RequestPayload FindByRegionMuseumsRequest request) {
         FindByRegionMuseumsResponse response = new FindByRegionMuseumsResponse();
-        MuseumUtil museumUtil = MuseumUtil.createInstance();
+        MuseumUtil museumUtil = MuseumUtil.getInstance();
         String region = request.getRegion().toLowerCase().trim();
         List<DbMuseum> dbMuseums = museumDao.findMuseumsByRegion(region);
         if (!dbMuseums.isEmpty()) {

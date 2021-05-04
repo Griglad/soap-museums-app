@@ -32,7 +32,7 @@ public class InputMuseumService {
     public InputMuseumResponse inputMuseumResponse(@RequestPayload InputMuseumRequest request) {
         InputMuseumResponse response = new InputMuseumResponse();
         String museumName = request.getName().toLowerCase();
-        MuseumUtil museumUtil = MuseumUtil.createInstance();
+        MuseumUtil museumUtil = MuseumUtil.getInstance();
         if (museumDao.findMuseum(museumName) != null) {
             logger.info(museumName + " already exists in database");
             response.setMessage(Messages.MUSEUM_EXIST.info);

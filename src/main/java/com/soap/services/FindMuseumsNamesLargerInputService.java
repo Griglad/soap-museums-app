@@ -4,13 +4,14 @@ import com.soap.jpa.DbMuseum;
 import com.soap.model.FindNamesLargerInputValueRequest;
 import com.soap.model.FindNamesLargerInputValueResponse;
 import com.soap.utilities.Messages;
-import com.soap.utilities.MuseumUtil;
+import com.soap.utilities.MuseumCollections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 public class FindMuseumsNamesLargerInputService {
 
-
+    private final Set<DbMuseum> dbMuseumSet = MuseumCollections.getDbMuseumSet();
     private final Logger logger = LoggerFactory.getLogger(FindMuseumsNamesLargerInputService.class);
 
 
@@ -27,7 +28,7 @@ public class FindMuseumsNamesLargerInputService {
     public FindNamesLargerInputValueResponse getPointsLargerResponse(@RequestPayload FindNamesLargerInputValueRequest request) {
         FindNamesLargerInputValueResponse response = new FindNamesLargerInputValueResponse();
         long value = request.getCounterValue();
-        List<DbMuseum> largerThanCounterVal = MuseumUtil.getDbMuseums().stream().filter(e -> e.getCounter() > value).collect(Collectors.toList());
+        List<DbMuseum> largerThanCounterVal = dbMuseumSet.stream().filter(e -> e.getCounter() > value).collect(Collectors.toList());
         List<String> museumNames = largerThanCounterVal.stream().map(DbMuseum::getName).collect(Collectors.toList());
         logger.info("museum names larger than " + request.getCounterValue() + " counter value are " + museumNames);
         if (!museumNames.isEmpty()) {

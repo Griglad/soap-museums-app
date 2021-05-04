@@ -6,6 +6,7 @@ import com.soap.model.FindNearestNameRequest;
 import com.soap.model.FindNearestNameResponse;
 import com.soap.utilities.GeometryHelper;
 import com.soap.utilities.Messages;
+import com.soap.utilities.MuseumCollections;
 import com.soap.utilities.MuseumUtil;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.operation.distance.DistanceOp;
@@ -15,9 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Grigorios Ladas
@@ -28,7 +27,8 @@ public class FindNearestMuseumNameService {
 
 
     private final MuseumDao museumDao;
-    private final Map<DbMuseum, Double> museumDistanceOnMap = new HashMap<>();
+    private final Set<DbMuseum> dbMuseumSet = MuseumCollections.getDbMuseumSet();
+    private final Map<DbMuseum, Double> museumDistanceOnMap = MuseumCollections.getMuseumDistanceOnMap();
     private final Logger logger = LoggerFactory.getLogger(FindNearestMuseumNameService.class);
 
     @Autowired
@@ -40,7 +40,7 @@ public class FindNearestMuseumNameService {
     //Return a response with the nearest museums name based on distance between the input(lat&long) and the museums coordinates in db
     public FindNearestNameResponse FindNearestNameResponse(@RequestPayload FindNearestNameRequest request) {
         FindNearestNameResponse response = new FindNearestNameResponse();
-        MuseumUtil util = MuseumUtil.createInstance();
+        MuseumUtil util = MuseumUtil.getInstance();
         if (util.isValidCoordinates(request.getLatitude(), request.getLongitude())) {
             Point myPoint = GeometryHelper.createPoint(request.getLatitude(), request.getLongitude());
             List<DbMuseum> dbMuseums = museumDao.getAllDbMuseums();
@@ -52,7 +52,7 @@ public class FindNearestMuseumNameService {
                 museumDistanceOnMap.forEach((dbMuseum, aDouble) -> logger.info("Distance from my point and museum " + dbMuseum.getName() + " is " + aDouble + " units"));
                 DbMuseum dbMuseum = util.retrieveMinDistanceMuseum(museumDistanceOnMap);
                 util.updateCounter(dbMuseum);
-                MuseumUtil.getDbMuseums().add(dbMuseum);
+                dbMuseumSet.add(dbMuseum);
                 response.setMessage(Messages.NEAREST_FOUND.info);
                 response.setMuseumName(dbMuseum.getName());
                 response.setDescription(dbMuseum.getDescription());
