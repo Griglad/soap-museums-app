@@ -51,6 +51,7 @@ public class FindNearestMuseumNameService {
                 museumDistanceOnMap.forEach((dbMuseum, aDouble) -> logger.info("Distance from my point and museum " + dbMuseum.getName() + " is " + aDouble + " units"));
                 DbMuseum dbMuseum = util.retrieveMinDistanceMuseum(museumDistanceOnMap);
                 util.updateCounter(dbMuseum);
+                museumDao.updateMuseum(dbMuseum);
                 dbMuseumSet.add(dbMuseum);
                 response.setMessage(Messages.NEAREST_FOUND.info);
                 response.setMuseumName(dbMuseum.getName());
