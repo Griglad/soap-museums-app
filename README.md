@@ -7,11 +7,11 @@ Installation instructions
 
 1.Download postgre (https://www.postgresql.org/download/)
 
-2.start the database.
+2.Start the database.
 
-3.create a database named places.
+3.Create a database named places.
 
-4.perform some monument inputs from data.sql manually.
+4.Perform some monument inputs from data.sql manually.
 
 5.In application.properties file use your own username and password.
 
