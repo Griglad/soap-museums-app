@@ -2,7 +2,6 @@ package com.soap.utilities;
 
 import com.soap.jpa.DbMuseum;
 import com.soap.model.Museum;
-
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -14,13 +13,15 @@ public final class MuseumUtil {
     private final double startingLatitude = 35.01186;
     private final double endingLongitude = 28.2225;
     private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-
+    private static MuseumUtil instance = null;
 
 
     public static MuseumUtil getInstance() {
-        return new MuseumUtil();
+        if (instance == null) {
+            instance = new MuseumUtil();
+        }
+        return instance;
     }
-
 
 
     public Museum fromdbToMuseum(DbMuseum dbMuseum) {

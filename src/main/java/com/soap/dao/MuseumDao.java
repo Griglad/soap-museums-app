@@ -1,7 +1,6 @@
 package com.soap.dao;
 
 import com.soap.jpa.DbMuseum;
-
 import java.util.List;
 
 public interface MuseumDao {

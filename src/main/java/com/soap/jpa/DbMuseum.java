@@ -1,9 +1,7 @@
 package com.soap.jpa;
 
-
 import org.hibernate.annotations.ColumnDefault;
 import org.locationtech.jts.geom.Point;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -32,12 +30,9 @@ public class DbMuseum {
     @Column(columnDefinition = "text")
     private String description;
 
-
     @Column
     @ColumnDefault("0")
     private long counter;
-
-
 
     public Long getId() {
         return id;
@@ -123,6 +118,7 @@ public class DbMuseum {
                 ", description='" + description + '\'' +
                 '}' + "\n";
     }
+
 }
 
 
