@@ -14,18 +14,26 @@ public final class MuseumUtil {
     private final double startingLatitude = 35.01186;
     private final double endingLongitude = 28.2225;
     private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
-    private static MuseumUtil instance = null;
+    private static volatile MuseumUtil INSTANCE = null;
 
 
     private MuseumUtil() {
 
     }
 
+    private static final Object lock = new Object();
+
     public static MuseumUtil getInstance() {
-        if (instance == null) {
-            instance = new MuseumUtil();
+        if (INSTANCE == null) {
+            synchronized (lock) {
+                if (INSTANCE == null) {
+                    INSTANCE = new MuseumUtil();
+                }
+            }
+
         }
-        return instance;
+        return INSTANCE;
+
     }
 
 
