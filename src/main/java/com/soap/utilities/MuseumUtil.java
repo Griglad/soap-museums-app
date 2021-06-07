@@ -2,6 +2,7 @@ package com.soap.utilities;
 
 import com.soap.jpa.DbMuseum;
 import com.soap.model.Museum;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -15,6 +16,10 @@ public final class MuseumUtil {
     private final Pattern inputPattern = Pattern.compile("^\\D{4,80}+(\\s\\D{4,80}+)*$");
     private static MuseumUtil instance = null;
 
+
+    private MuseumUtil() {
+
+    }
 
     public static MuseumUtil getInstance() {
         if (instance == null) {
