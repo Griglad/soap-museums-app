@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * @author Grigorios Ladas
  */
-public final class MuseumUtil {
+public class MuseumUtil {
 
     private final double startingLatitude = 35.01186;
     private final double endingLongitude = 28.2225;
